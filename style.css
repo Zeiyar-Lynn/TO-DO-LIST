@@ -1,0 +1,117 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:400,700);
+
+* {
+   margin: 0;
+   padding: 0;
+   font-family: 'Poppins', sans-serif;
+}
+
+body {
+   text-align: center;
+   background-image: linear-gradient(90deg, rgb(149, 179, 31) 0%, rgba(212,209,88,0.981127485173757) 42%, rgba(255,170,0,1) 100%);
+}
+
+.container {
+   width: 620px;
+   margin: 0 auto;
+   /* outline: 1px solid red; */
+}
+
+h1 {
+   margin-top: 10vh;
+   font-size: 3rem;
+}
+
+form {
+   margin-top: 6vh;
+   /* outline: 1px solid red; */
+}
+
+form input, form button, select {
+   box-sizing: border-box;
+   font-size: 1.7rem;
+   padding: 5px 8px;
+   border: none;
+   outline: none;
+   background-color: #fff;
+}
+
+form button:hover {
+   color: orange;
+   cursor: pointer;
+   transition: .1s;
+}
+
+form input {
+   width: 420px;
+   margin-right: -5px;
+   padding-left: 1rem;
+}
+
+select {
+   width: 9rem;
+   font-size: 1.1rem;
+   padding-block: 15px 9px;
+   margin-left: 12px;
+}
+
+#note-ctr {
+   margin-top: 2rem;
+}
+
+li {
+   width: 30rem;
+   margin: 0 auto;
+   padding: .5rem .8rem;
+   display: flex;
+   text-align: left;
+   list-style-type: none;
+   background-color: #fff;
+   transition: .4s;
+}
+
+li+ li {
+   margin-top: .4rem;
+}
+
+li p {
+   width: 100%;
+   font-size: 1.4rem;
+   padding-left: 1rem;
+}
+
+li input {
+   margin: 7px 12px 0 13px;
+   width: 1.2rem;
+   height: 1.2rem;
+}
+
+li button {
+   font-size: 1.2rem;
+   padding: 0 9px;
+   margin-block: 2px;
+   color: #fff;
+   background-color: #ff0000;
+   border: none;
+   border-radius: 3px;
+}
+
+li button:hover {
+   background-color: #a72c2c;
+   cursor: pointer;
+   transition: .2s;
+}
+
+.fa-multiply {
+   pointer-events: none;
+}
+
+.fall-animation {
+   transform: translateY(8rem) rotateZ(20deg);
+   opacity: 0;
+}
+
+.checked {
+   text-decoration: line-through;
+   opacity: .7;
+}

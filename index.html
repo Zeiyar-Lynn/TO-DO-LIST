@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>To-Do</title>
+   <link rel="stylesheet" href="./style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+   <div class="container">
+      <h1>Osamu's To-do list</h1>
+      <form>
+         <input type="text" id="get input" placeholder="Enter a note">
+         <button type="submit" id="add-note"><i class="fas fa-plus-square"></i></button>
+         <select id="filter">
+            <option value="all">all</option>
+            <option value="completed">completed</option>
+            <option value="incompleted">incompleted</option>
+         </select>
+      </form>
+      <div >
+         <ul id="note-ctr"></ul>
+      </div>
+   </div>
+   <script src="./app.js"></script>
+</body>
+</html>
