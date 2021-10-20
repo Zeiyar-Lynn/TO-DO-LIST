@@ -65,13 +65,7 @@ function filterNotes(e) {
 }
 
 function saveToLocal(note) {
-   let notes;
-   if (localStorage.getItem('notes') === null) {
-      notes = [];
-   }
-   else {
-      notes = JSON.parse(localStorage.getItem('notes'));
-   }
+   let notes = JSON.parse(localStorage.getItem('notes'));
    notes.push(note);
    localStorage.setItem('notes', JSON.stringify(notes));
 } 
