@@ -9,37 +9,12 @@ add.addEventListener('click', addNote);
 noteCtr.addEventListener("click", deleteCheckNote); // intresting eve approach   
 filter.addEventListener("click", filterNotes);
 
-
-
 //functions
 function addNote(e) {
    e.preventDefault();
-   const createNote = document.createElement("li");
-   createNote.classList.add("note");
-
-   // create p tag
-   const createP = document.createElement("p");
-   createP.innerText = textInp.value;
+   createANoteNode(textInp.value);
    saveToLocal(textInp.value);
    textInp.value = '';
-   
-   // create input tag
-   const createCheck = document.createElement("input");
-   const createInpType = document.createAttribute("type")
-   createInpType.value = "checkbox";
-   createCheck.setAttributeNode(createInpType);
-   createCheck.classList.add("check")
-
-   // create button tag
-   const createTrash = document.createElement("button");
-   createTrash.classList.add("delete");
-   createTrash.innerHTML = '<i class="fas fa-multiply">';   
-
-   // add note
-   createNote.appendChild(createP);
-   createNote.appendChild(createCheck);
-   createNote.appendChild(createTrash);
-   noteCtr.appendChild(createNote);
 }
 
 function deleteCheckNote(e) {
@@ -48,10 +23,9 @@ function deleteCheckNote(e) {
       let note = temp.parentNode;
       note.classList.add("fall-animation");
       note.addEventListener('transitionend', (e) => {
-         // this is happening twice ??
+         // this is loopind twice, but why??
          note.remove();
       })
-      // calculate index of note in notes
       removeFromLocal(note);
    }
 
@@ -67,7 +41,7 @@ function filterNotes(e) {
    let cond = e.target.value;
    const note = document.getElementsByClassName('note')
    Array.from(note).forEach(function (iter) {
-      switch(cond) {
+      switch(cond) {// for performace 
          case("completed"):
             if (!iter.classList.contains("checked")) {
               iter.style.display = "none";
@@ -91,9 +65,7 @@ function filterNotes(e) {
 }
 
 function saveToLocal(note) {
-   // console.log('ues');
    let notes;
-   // console.log(localStorage.getItem('notes'))
    if (localStorage.getItem('notes') === null) {
       notes = [];
    }
@@ -123,32 +95,36 @@ function fetchLocal() {
    if (notes === null) { //not to get null error
       localStorage.setItem('notes', JSON.stringify([]));
    }
+   notes = JSON.parse(localStorage.getItem('notes'));
 
    notes.forEach(function (note) {
-      const createNote = document.createElement("li");
-      createNote.classList.add("note");
-
-      // create p tag
-      const createP = document.createElement("p");
-      createP.innerText = note;
-         
-      // create input tag
-      const createCheck = document.createElement("input");
-      const createInpType = document.createAttribute("type")
-      createInpType.value = "checkbox";
-      createCheck.setAttributeNode(createInpType);
-      createCheck.classList.add("check")
-
-      // create button tag
-      const createTrash = document.createElement("button");
-      createTrash.classList.add("delete");
-      createTrash.innerHTML = '<i class="fas fa-multiply">';   
-      
-      // add note
-      createNote.appendChild(createP);
-      createNote.appendChild(createCheck);
-      createNote.appendChild(createTrash);
-      noteCtr.appendChild(createNote);
+      createANoteNode(note);
    });
 }
 
+function createANoteNode(text) {
+   const createNote = document.createElement("li");
+   createNote.classList.add("note");
+
+   // create p tag
+   const createP = document.createElement("p");
+   createP.innerText = text;
+      
+   // create input tag
+   const createCheck = document.createElement("input");
+   const createInpType = document.createAttribute("type")
+   createInpType.value = "checkbox";
+   createCheck.setAttributeNode(createInpType);
+   createCheck.classList.add("check")
+
+   // create button tag
+   const createTrash = document.createElement("button");
+   createTrash.classList.add("delete");
+   createTrash.innerHTML = '<i class="fas fa-multiply">';   
+   
+   // create a note
+   createNote.appendChild(createP);
+   createNote.appendChild(createCheck);
+   createNote.appendChild(createTrash);
+   noteCtr.appendChild(createNote);
+}
